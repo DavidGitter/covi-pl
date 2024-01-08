@@ -1,7 +1,7 @@
 # Harris Corner Detection
 
 ## Introduction
-The ability to discover corners in an image forms an important basis for the field of image processing. Corners represent points of interest in an image. If you were to assign points to edges in an image, this would take quite a long time, as edges are arbitrarily long. With corners, on the other hand, we are able to mark them with just one point.
+The ability to discover corners in an image forms an important basis for the field of image processing. Corners represent points of interest in an image. If you were to assign points to edges in an image, this would take quite a long time, as edges are arbitrarily long. Corners, on the other hand, we are able to be marked with just one point.
 
 <p align="center">
     <img src="pictures/unmarked_one.jpg" alt="unmarked" width="200"/>
@@ -10,7 +10,7 @@ The ability to discover corners in an image forms an important basis for the fie
 
 Using a mesh of corners as an example, we are able to draw conclusions about the object type based on the distribution alone.
 The image showing a 1 serves as an example. Even after marking the corners and removing the actual image, we are able to identify the object as a 1, knowing that it is a number.
-Or we can stitch togehter multiple partial images to one big together even if they were not clean seperated just by finding markant corner meshs in the image pairs
+Or we can stitch togehter multiple partial images to one big together even if they were not clean seperated just by finding markant corner meshs in the image pairs.
 
 <p align="center">
     <img src="pictures/image_stitching_opencv_header.jpg" alt="stitching" width="600"/>
@@ -28,7 +28,7 @@ Out goal is to find the corners in the picture of this chessboard:
 To simplify the process in general it is recommended to convert colored images to grey-scale to speed up computation.
 
 ### Step 1: Create the X and Y derivation matrices using the sobel filter
-We use the two Sobel cores Ix and Iy for this. These are moved step by step over the original image. The closer the individual fields are to each other, the more they cancel each other out. High colour changes, on the other hand, remain.
+We use the two Sobel kernels Ix and Iy for this. These are moved step by step over the original image. The closer the individual fields are to each other, the more they cancel each other out. High colour changes, on the other hand, remain.
 
 Sobel Kernel X: $$ Ix = \begin{bmatrix} -1 & 0 & 1  \\ -2 & 0 & 2 \\ -1 & 0 & 1 \end{bmatrix} $$
 
@@ -64,8 +64,8 @@ The parameter k is used to penalise the trace term, which determines the value-d
     <img src="pictures/magnitude_matrix_R.png" alt="chess_orig" width="400"/>
 </p>
 
-### Step 4: Tresholding
-As you can see in the picture of the last step, the corners of the chessboard are already visible. To finalise them, all you have to do is perform a trsholding on the magnitude matrix. We use the following function for this:
+### Step 4: Thresholding
+As you can see in the picture of the last step, the corners of the chessboard are already visible. To finalise them, all you have to do is perform a thresholding on the magnitude matrix. We use the following function for this:
 
 $$ I_{final} = I_{xy}\begin{cases} 1, when R_{xy} > treshold * R_{max} \\ 0, else \end{cases}\\ $$
 
