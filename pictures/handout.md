@@ -4,8 +4,8 @@
 The ability to discover corners in an image forms an important basis for the field of image processing. Corners represent points of interest in an image. If you were to assign points to edges in an image, this would take quite a long time, as edges are arbitrarily long. With corners, on the other hand, we are able to mark them with just one point.
 
 <p align="center">
-    <img src="pictures/unmarked_one.jpg" alt="unmarked" width="200"/>
-    <img src="pictures/marked_one.jpg" alt="marked" width="200"/>
+    <img src="unmarked_one.jpg" alt="unmarked" width="200"/>
+    <img src="marked_one.jpg" alt="marked" width="200"/>
 </p>
 
 Using a mesh of corners as an example, we are able to draw conclusions about the object type based on the distribution alone.
@@ -13,7 +13,7 @@ The image showing a 1 serves as an example. Even after marking the corners and r
 Or we can stitch togehter multiple partial images to one big together even if they were not clean seperated just by finding markant corner meshs in the image pairs
 
 <p align="center">
-    <img src="pictures/image_stitching_opencv_header.jpg" alt="stitching" width="600"/>
+    <img src="image_stitching_opencv_header.jpg" alt="stitching" width="600"/>
 </p>
 
 ## Alogrithm
@@ -22,7 +22,7 @@ The main concept of the Harris Corner Detection is to find the magnitudes of col
 Out goal is to find the corners in the picture of this chessboard:
 
 <p align="center">
-    <img src="pictures/schach.jpg" alt="chess_orig" width="400"/>
+    <img src="schach.jpg" alt="chess_orig" width="400"/>
 </p>
 
 To simplify the process in general it is recommended to convert colored images to grey-scale to speed up computation.
@@ -37,8 +37,8 @@ Sobel Kernel Y: $$ Iy = \begin{bmatrix} 1 & 2 & 1  \\ 0 & 0 & 0 \\ -1 & -2 & -1 
 The resulting matrices looking like this when plotted as pictures
 
 <p align="center">
-    <img src="pictures/sobel_x.png" alt="chess_orig" width="400"/>
-    <img src="pictures/sobel_y.png" alt="chess_orig" width="400"/>
+    <img src="sobel_x.png" alt="chess_orig" width="400"/>
+    <img src="sobel_y.png" alt="chess_orig" width="400"/>
 </p>
 
 ### Step 2: Calculate the tensor and the gradient sums
@@ -61,7 +61,7 @@ $$ \text{trace}(M) = \lambda_1 + \lambda_2 $$
 The parameter k is used to penalise the trace term, which determines the value-difference between Lambda1 and Lambda2. The result looks accordingly when output as an image:
 
 <p align="center">
-    <img src="pictures/magnitude_matrix_R.png" alt="chess_orig" width="400"/>
+    <img src="magnitude_matrix_R.png" alt="chess_orig" width="400"/>
 </p>
 
 ### Step 4: Tresholding
@@ -74,7 +74,7 @@ where the threshold is a small number at around 0.1. This helps eliminating all 
 Our resulting image looks like this:
 
 <p align="center">
-    <img src="pictures/final.png" alt="chess_orig" width="400">
+    <img src="final.png" alt="chess_orig" width="400">
 </p>
 
 where each white dot belongs to the corner at the same position of the original image.
